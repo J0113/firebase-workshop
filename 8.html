@@ -1,0 +1,16 @@
+Add the following to your snapshot.docs.map return:
+<button onClick="deleteItem('${doc.id}')">X</button>
+
+
+Add this in your root:
+const deleteItem = (id) => {
+  db.collection("todo-items")
+    .doc(id)
+    .delete()
+    .then(() => {
+      console.log("Document successfully deleted!");
+    })
+    .catch((error) => {
+      console.error("Error removing document: ", error);
+    });
+};
